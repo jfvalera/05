@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @keyframes shine {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes morphBackground {
+            0% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40%/50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+        }
+
+        .shine-effect {
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                rgba(255,255,255,0.2) 10%,
+                rgba(255,255,255,0.4) 20%,
+                rgba(255,255,255,0.2) 30%,
+                transparent 40%);
+            background-size: 200% 100%;
+            animation: shine 4s infinite;
+        }
+
+        .morph {
+            animation: morphBackground 8s ease-in-out infinite;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .bg-noise {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj4KICA8ZmlsdGVyIGlkPSJub2lzZSI+CiAgICA8ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC42NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPgogIDwvZmlsdGVyPgogIDxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWx0ZXI9InVybCgjbm9pc2UpIiBvcGFjaXR5PSIwLjA1Ii8+Cjwvc3ZnPg==');
+        }
+
+        .image-container {
+            width: 96px;
+            height: 96px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="bg-black min-h-screen flex items-center justify-center overflow-hidden font-sans bg-noise">
+    <!-- Fondo animado -->
+    <div class="fixed inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
+        <div class="absolute inset-0 opacity-30 bg-noise"></div>
+    </div>
+
+    <!-- Elemento morfológico -->
+    <div class="fixed w-[800px] h-[800px] morph" style="
+        background: linear-gradient(45deg, rgba(138, 43, 226, 0.05), rgba(0, 0, 139, 0.05));
+        filter: blur(100px);
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+    "></div>
+
+    <main class="relative z-10 w-full max-w-4xl mx-auto px-6">
+        <div class="text-center space-y-16">
+            <!-- Imagen principal -->
+            <div class="relative fade-in-up flex justify-center" style="animation-delay: 0.2s">
+                <div class="image-container">
+                    <div class="shine-effect absolute inset-0 z-10"></div>
+                    <img src="tridente.png" alt="Mysterious" class="filter-none hover:filter-none transition-filter duration-300"/>
+                </div>
+            </div>
+
+            <!-- Año -->
+            <div class="fade-in-up" style="animation-delay: 0.4s">
+                <h1 class="text-8xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-white">
+                    2025
+                </h1>
+            </div>
+
+            <!-- Línea decorativa -->
+            <div class="fade-in-up flex items-center justify-center gap-4" style="animation-delay: 0.6s">
+                <div class="w-12 h-[1px] bg-gradient-to-r from-transparent via-gray-500 to-transparent"></div>
+                <svg data-lucide="plus" class="w-4 h-4 text-gray-500"></svg>
+                <div class="w-12 h-[1px] bg-gradient-to-r from-transparent via-gray-500 to-transparent"></div>
+            </div>
+
+            <!-- Texto "Próximamente" -->
+            <div class="fade-in-up" style="animation-delay: 0.8s">
+                <p class="text-lg text-gray-400 tracking-[0.3em] uppercase">Próximamente</p>
+            </div>
+
+            <!-- Iconos decorativos -->
+            <div class="flex justify-center gap-16 fade-in-up" style="animation-delay: 1s">
+                <svg data-lucide="crystal-ball" class="w-6 h-6 text-gray-600 opacity-60"></svg>
+                <svg data-lucide="infinity" class="w-6 h-6 text-gray-600 opacity-60"></svg>
+                <svg data-lucide="crystal-ball" class="w-6 h-6 text-gray-600 opacity-60"></svg>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
